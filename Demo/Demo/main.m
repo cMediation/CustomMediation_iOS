@@ -1,9 +1,4 @@
-//
-//  main.m
-//  Demo
-//
-//  Created by xuejun on 2024/6/3.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
