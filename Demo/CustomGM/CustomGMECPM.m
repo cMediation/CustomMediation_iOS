@@ -7,6 +7,26 @@
 
 + (nullable NSString *)getECPMWithMediation:(id )mediation
 {
+    if([mediation respondsToSelector:@selector(targetPackage)])
+    {
+        id targetPackage = [mediation performSelector:@selector(targetPackage)];
+        if(targetPackage == nil)
+        {
+            return nil;
+        }
+        double ecpmNumer = 0;
+        if([targetPackage respondsToSelector:@selector(ecpm)])
+        {
+            NSString *ecpmStr = [targetPackage performSelector:@selector(ecpm)];
+            ecpmNumer = [ecpmStr doubleValue];
+        }
+        if(ecpmNumer == 0)
+        {
+            return nil;
+        }
+        return [NSString stringWithFormat:@"%@",@(ecpmNumer/100.0)];
+    }
+    //64-
     if(![mediation respondsToSelector:@selector(adapterToAdPackage)])
     {
         return nil;
@@ -31,6 +51,26 @@
     {
         intersitiial = [mediation performSelector:@selector(fullscreenVideoAd)];
     }
+    if([intersitiial respondsToSelector:@selector(targetPackage)])
+    {
+        id targetPackage = [intersitiial performSelector:@selector(targetPackage)];
+        if(targetPackage == nil)
+        {
+            return nil;
+        }
+        double ecpmNumer = 0;
+        if([targetPackage respondsToSelector:@selector(ecpm)])
+        {
+            NSString *ecpmStr = [targetPackage performSelector:@selector(ecpm)];
+            ecpmNumer = [ecpmStr doubleValue];
+        }
+        if(ecpmNumer == 0)
+        {
+            return nil;
+        }
+        return [NSString stringWithFormat:@"%@",@(ecpmNumer/100.0)];
+    }
+    //64-
     if(![intersitiial respondsToSelector:@selector(adapterToAdPackage)])
     {
         return nil;
