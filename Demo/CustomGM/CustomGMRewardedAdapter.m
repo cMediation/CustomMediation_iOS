@@ -233,6 +233,8 @@
     if (self.shouldReward || !self.isSkip)
         [self AdRewardedWithInfo:self.rewardDic];
     [self AdClose];
+    self.expressRewardedVideoAd.delegate = nil;
+    self.expressRewardedVideoAd = nil;
 }
 
 // 广告被点击
